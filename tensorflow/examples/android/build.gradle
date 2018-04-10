@@ -40,7 +40,7 @@ allprojects {
 }
 
 // set to 'bazel', 'cmake', 'makefile', 'none'
-def nativeBuildSystem = 'bazel'
+def nativeBuildSystem = 'none'
 
 // Controls output directory in APK and CPU type for Bazel builds.
 // NOTE: Does not affect the Makefile build target API (yet), which currently
@@ -172,14 +172,14 @@ task copyNativeLibs(type: Copy) {
 }
 
 tasks.whenTaskAdded { task ->
-    if (nativeBuildSystem == 'bazel' || nativeBuildSystem == 'makefile') {
+  /*  if (nativeBuildSystem == 'bazel' || nativeBuildSystem == 'makefile') {
         if (task.name == 'assembleDebug') {
             task.dependsOn 'copyNativeLibs'
         }
         if (task.name == 'assembleRelease') {
             task.dependsOn 'copyNativeLibs'
         }
-    }
+    }*/
 }
 
 // Download default models; if you wish to use your own models then
